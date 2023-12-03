@@ -4,33 +4,17 @@
  * Module dependencies.
  */
 
-import { createServer } from 'http';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import http from 'http';
 import app from '../app';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-/**
- * Get port from environment and store in Express.
- */
-const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+const debug = require('debug')('proyecto_final:server');
 
 /**
  * Create HTTP server.
  */
 
-const server = createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+const server = http.createServer(app);
+// app es (req, res) => {} (callback)
 
 /**
  * Normalize a port into a number, string, or false.
@@ -39,16 +23,25 @@ server.on('listening', onListening);
 function normalizePort(val) {
   const port = parseInt(val, 10);
 
-  if (isNaN(port)) {
+  if (typeof port === 'number') {
+    // named pipe
     return val;
   }
 
   if (port >= 0) {
+    // port number
     return port;
   }
 
   return false;
 }
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
 
 /**
  * Event listener for HTTP server "error" event.
@@ -61,13 +54,14 @@ function onError(error) {
 
   const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
 
+  // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(`🚫 ${bind} requires elevated privileges`);
+      console.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(`🚫 ${bind} is already in use`);
+      console.error(`${bind} is already in use`);
       process.exit(1);
       break;
     default:
@@ -82,5 +76,18 @@ function onError(error) {
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
-  console.debug(`📢 Listening on ${bind}`);
+  debug(`📣 Listening on ${bind}`);
 }
+// línea de eddy, se encuentra en la
+// documentación de express
+
+// debug.enabled = true;
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+// resgitrando eventos en el servidor
+server.on('error', onError);
+server.on('listening', onListening);

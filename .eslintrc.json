@@ -1,6 +1,6 @@
 {
-    "parser":"@babel/eslint-parser",
-    "plugins":["prettier"],
+    "parser": "@babel/eslint-parser",
+    "plugins": ["prettier"],
     "env": {
         "browser": true,
         "es2021": true,
@@ -12,7 +12,7 @@
         "sourceType": "module"
     },
     "rules": {
-      "no-console":"off",
-      "prettier/prettier":["error"]
+        "no-console":"off",
+        "prettier/prettier": ["error"]
     }
 }

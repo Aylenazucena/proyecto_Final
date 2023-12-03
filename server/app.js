@@ -7,7 +7,7 @@ import logger from 'morgan'; // Quita los paréntesis aquí
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
-import debug from './server/debugLogger';
+import debug from './debugLogger';
 
 // var debug = require('debug')('dwpcii:server');
 
