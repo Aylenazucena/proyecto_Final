@@ -1,19 +1,17 @@
 {
-    "name": "proyecto_final",
+    "name": "delete-dwpcll",
     "version": "0.0.0",
     "private": true,
     "scripts": {
-      "start": "node ./server/bin/www",
-      "dev": "nodemon --exec babel-node ./server/bin/www",
-      "devc": "NODE_ENV=development && webpack serve --config ./webpack.dev.config.js --mode development",
-      "devb": "babel-watch ./server/bin/www",
-      "cleans": "rm -rf dist",
-      "cleanc": "rm -f ./public/bundle.js",
+      "start": "node ./dist/bin/www",
+      "dev": "DEBUG=proyecto_final:server && babel-watch ./server/bin/www",
       "b:s": "npm run cleans && babel ./server --out-dir dist --copy-files",
+      "devc": "NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
+      "cleans": "rm -rf ./dist",
+      "cleanc": "rm -f ./public/bundle.js",
       "b:c": "npm run cleanc && webpack --config ./webpack.config.js --mode production",
       "build": "npm run b:c && npm run b:s"
     },
-  
     "dependencies": {
       "cookie-parser": "~1.4.4",
       "debug": "~2.6.9",
@@ -21,7 +19,6 @@
       "hbs": "~4.0.4",
       "http-errors": "~1.6.3",
       "morgan": "~1.9.1",
-      "node-modules": "^1.0.1",
       "webpack-dev-middleware": "^6.0.2",
       "webpack-hot-middleware": "^2.25.3"
     },
