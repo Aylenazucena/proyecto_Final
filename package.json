@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
       "start": "node ./dist/bin/www",
-      "dev": "DEBUG=proyecto_final:server && babel-watch ./server/bin/www",
+      "dev": "NODE_ENV=development DEBUG=proyecto_final:server babel-watch ./server/bin/www",
       "b:s": "npm run cleans && babel ./server --out-dir dist --copy-files",
       "devc": "NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
       "cleans": "rm -rf ./dist",
@@ -18,9 +18,7 @@
       "express": "~4.16.1",
       "hbs": "~4.0.4",
       "http-errors": "~1.6.3",
-      "morgan": "~1.9.1",
-      "webpack-dev-middleware": "^6.0.2",
-      "webpack-hot-middleware": "^2.25.3"
+      "morgan": "~1.9.1"
     },
     "devDependencies": {
       "@babel/cli": "^7.22.15",
@@ -34,6 +32,8 @@
       "mini-css-extract-plugin": "^2.7.6",
       "webpack": "^5.76.1",
       "webpack-cli": "^5.0.1",
-      "webpack-dev-server": "^4.11.1"
+      "webpack-dev-middleware": "^6.1.1",
+      "webpack-dev-server": "^4.11.1",
+      "webpack-hot-middleware": "^2.25.4"
     }
   }
