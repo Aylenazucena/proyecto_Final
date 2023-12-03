@@ -5,13 +5,13 @@
   "scripts": {
     "start": "node ./dist/bin/www",
     "dev": "NODE_ENV=development DEBUG=proyecto_final:server babel-watch ./server/bin/www",
+    "b:s": "npm run cleans && babel ./server --out-dir dist --copy-files",
     "devc": "NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
-    "devb": "DEBUG=dwpcii1:server && babel-watch ./server/bin/www",
     "cleans": "rm -rf ./dist",
     "cleanc": "rm -f ./public/bundle.js ./public/styles/app.css",
-    "b:s": "npm run cleans && babel ./server --out-dir dist --copy-files",
     "b:c": "npm run cleanc && webpack --config ./webpack.config.js --mode production",
-    "build": "npm run b:c && npm run b:s"
+    "build": "npm run b:c && npm run b:s",
+    "clean:logs": "rm -rf ./server/logs/*.log"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -21,10 +21,9 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "webpack": "^5.76.1",
-    "webpack-cli": "^5.0.1",
     "webpack-dev-middleware": "^6.1.1",
-    "webpack-dev-server": "^4.11.1",
-    "webpack-hot-middleware": "^2.25.4"
+    "webpack-hot-middleware": "^2.25.4",
+    "winston": "^3.11.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.15",
@@ -42,6 +41,8 @@
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-webpack-plugin": "^4.0.1",
-    "mini-css-extract-plugin": "^2.7.6"
+    "mini-css-extract-plugin": "^2.7.6",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
   }
 }

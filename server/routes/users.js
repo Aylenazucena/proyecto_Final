@@ -1,15 +1,12 @@
-const express = require('express');
+import express from 'express';
 
-const router = express.Router();
+const { Router } = express;
 
-// GET /users
+const router = Router();
+
+/* GET users listing. */
 router.get('/', (req, res) => {
   res.send('respond with a resource');
 });
 
-// GET /users/author
-router.get('/author', (_, res) => {
-  res.render('author', { author: 'espinoza aylen & perez berenice ' });
-});
-
-module.exports = router;
+export default router;
