@@ -1,7 +1,7 @@
 <!-- Dropdow para menu "Projectos" -->
 <ul id="dropdownMenu" class="dropdown-content">
   <li>
-    <a href="/projects">
+    <a href="/project">
       <i class="large material-icons" style="margin: 2px;">
         list
       </i>
@@ -10,7 +10,7 @@
   </li>
   <li class="divider"></li>
   <li>
-    <a href="/projects/add">
+    <a href="/project/add">
       <i class="large material-icons" style="margin: 2px;">
         add_box
       </i>
@@ -47,14 +47,15 @@
     </a>
   </li>
 </ul>
-
-<!-- Inicia marcado de barra de navegación -->
 <nav class="teal darken-4">
   <div class="container">
     <div class="nav-wrapper">
-      <!-- Visulización de navegación en pantalla completa -->
+			<!-- Barra de navegación completa -->
       <a href="/" class="brand-logo">
-        📒 ProjNotes
+      <div class="brand-logo-img">
+        <img src="images/Projnotes-logo.jpeg" alt="ProjNotes" width="50px">
+        ProjNotes  
+      </div>
       </a>
       <ul id="nav" class="right hide-on-med-and-down">
         <li>
@@ -87,12 +88,16 @@
           <a class="dropdown-trigger" href="#!" data-target="user-dropdown-menu">
             Usuario
             <i class="material-icons right">
+              arrow_drop_down
+            </i>
+            <i class="material-icons right">
               people
             </i>
           </a>
         </li>
       </ul>
-      <!-- Visulización de Navegación para moviles -->
+      </ul>
+      <!-- Barra de navegación Móvil -->
       <a href="#" data-target="nav-mobile" class="sidenav-trigger">
         <i class="material-icons">
           menu
