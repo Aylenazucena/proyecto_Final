@@ -1,6 +1,4 @@
 // Cargando dependencias
-import createError from 'http-errors';
-
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
@@ -20,8 +18,9 @@ import webpackConfig from '../webpack.dev.config';
 // Impornting winston logger
 import log from './config/winston';
 
-import indexRouter from './routes/index';
-import usersRouter from './routes/users';
+// Importing Router
+import router from './router';
+
 import debug from './services/debugLogger';
 
 // Creando variable del directorio raiz
@@ -75,31 +74,7 @@ app.use(cookieParser());
 // Crea un server de archivos estaticos
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// Registro de Middlewares de aplicación
-app.use('/', indexRouter);
-// Activa "usersRourter" cuando se
-// solicita "/users"
-app.use('/users', usersRouter);
-// app.use('/author', (req, res)=>{
-//   res.json({mainDeveloper: "Ivan Rivalcoba"})
-// });
-
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-  log.info(`404 Pagina no encontrada ${req.method} ${req.originalUrl}`);
-  next(createError(404));
-});
-
-// error handler
-app.use((err, req, res) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  log.error(`${err.status || 500} - ${err.message}`);
-  res.render('error');
-});
+// Registro de Rutas
+router.addRoutes(app);
 
 export default app;
