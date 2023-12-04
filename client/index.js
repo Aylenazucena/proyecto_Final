@@ -1,4 +1,4 @@
 // cargando los estilos
-import './styles/style.css'
+import './styles/style.css';
 // Mensaje en la consola
-console.log("🎉 Estilos cargados correctamente 🎉");
+console.log('🎉 Estilos cargados correctamente 🎉');
