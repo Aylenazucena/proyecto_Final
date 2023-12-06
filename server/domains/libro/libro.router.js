@@ -137,7 +137,7 @@ const editPut = async (req, res) => {
   }
 };
 
-const deleteBook = async (req, res) => {
+const deletelibro = async (req, res) => {
   const { id } = req.params;
   // Usando el modelo para borrar el proyecto
   try {
@@ -156,5 +156,5 @@ export default {
   edit,
   editPut,
   addForm,
-  deleteBook,
+  deletelibro,
 };
