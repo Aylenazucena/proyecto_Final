@@ -24,17 +24,17 @@ const showDashboard = async (req, res) => {
 
 // GET "/project/add"
 const add = (req, res) => {
-  res.render('libro/addlibro');
+  res.render('libro/addLibro');
 };
 
-// POST "/libro/add"
+// POST "/project/add"
 const addPost = async (req, res) => {
   // Rescatando la info del formulario
   const { errorData: validationError } = req;
   // En caso de haber error
   // se le informa al cliente
   if (validationError) {
-    log.info('Se entrega al cliente error de validación de add book');
+    log.info('Se entrega al cliente error de validación de addlibro');
     // Se desestructuran los datos de validación
     const { value: libro } = validationError;
     // Se extraen los campos que fallaron en la validación
@@ -45,7 +45,7 @@ const addPost = async (req, res) => {
       workingPrev[`${curr.path}`] = curr.message;
       return workingPrev;
     }, {});
-    return res.status(422).render('libro/addlibro', { libro, errorModel });
+    return res.status(422).render('libro/addLibro', { libro, errorModel });
   }
   // En caso de que pase la validación
   // Se desestructura la información
@@ -55,12 +55,14 @@ const addPost = async (req, res) => {
     // Creando la instancia de un documento
     // con los valores de 'project'
     const savedlibro = await libroModel.create(libro);
-    // Se informa al cliente que se guardo el proyecto
+    // Se informa a cliente que se guardo el proyecto
     log.info(`Se carga libro ${savedlibro}`);
     // Se registra en el log el redireccionamiento
     log.info('Se redirecciona el sistema a /libro');
+    // Agregando mensaje flash
+    req.flash('successMessage', 'Libro agregado con exito');
     // Se redirecciona el sistema a la ruta '/book'
-    return res.redirect('/libro/showDashboard');
+    return res.redirect('/libro');
   } catch (error) {
     log.error(
       'ln 53 book.controller: Error al guardar el libro en la base de datos',

@@ -3,7 +3,7 @@ import homeRouter from './domains/home /home.router';
 // Importando enrutador user
 import userRouter from './domains/usuario/usario.router';
 // Imporntado enrutador project
-import projectRouter from './domains/libro/libro.router';
+import libroRouter from './domains/libro/libro.router';
 
 // Función que agrega rutas
 const addRoutes = (app) => {
@@ -12,7 +12,7 @@ const addRoutes = (app) => {
   // Agregado el enrutado de user
   app.use('/user', userRouter);
   // Agregado el enrutado de project
-  app.use('/project', projectRouter);
+  app.use('/libro', libroRouter);
   return app;
 };
 

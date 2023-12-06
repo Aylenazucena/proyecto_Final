@@ -15,7 +15,7 @@ import WebpackHotMiddleware from 'webpack-hot-middleware';
 // Importing webpack configuration
 import webpackConfig from '../webpack.dev.config';
 // Importing config session
-import configSession from './config/configSessions';
+import configSession from './config/configsSessions';
 // Importing template-engine
 import configTemplateEngine from './config/templateEngine';
 // Importing winston logger

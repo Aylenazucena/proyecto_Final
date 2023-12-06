@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col s12 m10 offset-m1 18 offset-12">
+        <div class="card">
+            <div class="card-image">
+                <img src="/images/addlibro.png" alt="Imagen alta del libro">
+                <span 
+                class="card-title add-project"
+                style="font-weight: bolder">
+                Alta Libro
+                </span>
+            </div>
+            <form autocomplete="off" action="/libro/add" method="post">
+            <div class="card-content">
+                <div class="input-field">
+                    <label for="libro-nombre">
+                        Nombre del libro
+                    </label>
+                    <input type="text"
+                    id="libro-nombre"
+                    nombre="nombre"
+                    placeholder="Ingrese nombre del libro"
+                    class="validate"
+                    required>                    
+                </div>
+                <div class="input-field">
+                    <label for="libro-autor">
+                        Autor del libro
+                    </label>
+                    <input type="text"
+                    id="libro-autor"
+                    nombre="autor"
+                    placeholder="Ingrese nombre del libro"
+                    class="validate"
+                    required>                    
+                </div>
+                <div class="input-field">
+                  <label for="libro-categoria">Seleccione Categoria</label>
+                  <input type="text"
+                    id="libro-categoria"
+                    nombre="categoria"
+                    placeholder="Ingrese categoria del libro"
+                    class="validate"
+                    required>
+                </div>
+                <div class="input-field">
+                    <label for="libro-isbn">
+                        ISBN del libro
+                    </label>
+                    <input type="text"
+                    id="libro-isbn"
+                    nombre="isbn"
+                    placeholder="Ingrese ISBN del libro"
+                    class="validate"
+                    required>                    
+                </div>
+                <div class="input-field">
+                    <label for="libro-copias">
+                        Copias del libro
+                    </label>
+                    <input type="text"
+                    id="libro-copias"
+                    nombre="copias"
+                    placeholder="Ingrese las copias del libro"
+                    class="validate"
+                    required>                    
+                </div>
+                <div class="input-field">
+                    <label for="libro-descripcion">
+                        descripcion del libro
+                    </label>
+                    <textarea nombre="descripcion"
+                    id="libro-descripcion"
+                    class="materialize-textarea validate"
+                    required></textarea>
+                </div>
+            </div>
+            <div class="card-action">
+                <button
+                class="blue darken-3 waves-effect waves-light btn">
+                <i class="material-icons left">note_add</i> Agregar
+                </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
