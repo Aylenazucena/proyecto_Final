@@ -6,14 +6,14 @@ import libroModel from './libro.models';
 
 // Action Methods
 
-// GET '/book/addForm'
-// GET '/book/add'
+// GET '/libro/addForm'
+// GET '/libro/add'
 const addForm = (req, res) => {
   res.render('libro/addView');
 };
 
-// GET "/book"
-// GET "/book"
+// GET "/libro"
+// GET "/libro"
 const showDashboard = async (req, res) => {
   // Consultado todos los proyectos
   const libro = await libroModel.find({}).lean().exec();
@@ -27,7 +27,7 @@ const add = (req, res) => {
   res.render('libro/addlibro');
 };
 
-// POST "/project/add"
+// POST "/libro/add"
 const addPost = async (req, res) => {
   // Rescatando la info del formulario
   const { errorData: validationError } = req;
@@ -69,15 +69,15 @@ const addPost = async (req, res) => {
   }
 };
 
-// GET "/book/edit/:id"
+// GET "/libro/edit/:id"
 const edit = async (req, res) => {
   // Extrayendo el id por medio de los parametros de url
   const { id } = req.params;
   // Buscando en la base de datos
   try {
     log.info(`Se inicia la busqueda del libro con el id: ${id}`);
-    const book = await libroModel.findOne({ _id: id }).lean().exec();
-    if (book === null) {
+    const libro = await libroModel.findOne({ _id: id }).lean().exec();
+    if (libro === null) {
       log.info(`No se encontro el libro con el id: ${id}`);
       return res
         .status(404)
@@ -86,7 +86,7 @@ const edit = async (req, res) => {
     // Se manda a renderizar la vista de edición
     // res.render('book/editView', book);
     log.info(`libro encontrado con el id: ${id}`);
-    return res.render('libro/editView', { book });
+    return res.render('libro/editView', { libro });
   } catch (error) {
     log.error('Ocurre un error en: metodo "error" de libro.controller');
     return res.status(500).json(error);
@@ -115,8 +115,8 @@ const editPut = async (req, res) => {
     return res.status(422).render('libro/editView', { libro, errorModel });
   }
   // Si no hay error
-  const book = await libroModel.findOne({ _id: id });
-  if (book === null) {
+  const libro = await libroModel.findOne({ _id: id });
+  if (libro === null) {
     log.info(`No se encontro el libro para actualizar con id: ${id}`);
     return res
       .status(404)
@@ -124,12 +124,12 @@ const editPut = async (req, res) => {
   }
   // En caso de encontrarse el documento se actualizan los datos
   const { validData: newlibro } = req;
-  book.name = newlibro.name;
-  book.description = newlibro.description;
+  libro.nombre = newlibro.nombre;
+  libro.description = newlibro.description;
   try {
     // Se salvan los cambios
     log.info(`Actualizando libro con id: ${id}`);
-    await book.save();
+    await libro.save();
     return res.redirect(`/libro/edit/${id}`);
   } catch (error) {
     log.error(`Error al actualizar proyecto con id: ${id}`);
@@ -137,7 +137,7 @@ const editPut = async (req, res) => {
   }
 };
 
-const deleteBook = async (req, res) => {
+const deletelibro = async (req, res) => {
   const { id } = req.params;
   // Usando el modelo para borrar el proyecto
   try {
@@ -156,5 +156,5 @@ export default {
   edit,
   editPut,
   addForm,
-  deleteBook,
+  deletelibro,
 };

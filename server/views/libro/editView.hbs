@@ -1,0 +1,149 @@
+<div class='row'>
+  <div class='col s12 m10 offset-m1 18 offset-12'>
+    <div class='card'>
+      <div class='card-image'>
+        <img src='/images/addbook.png' alt='Imagen de edicion de libro' />
+        <span class='card-title add-project' style='font-weight: bolder;'>
+          Editar libro
+        </span>
+      </div>
+      <form autocomplete="off" action="/book/edit/{{ book._id }}?_method=put" method="post">
+     <div class='card-content'>
+       <div class='input-field'>
+            <label for='book-name'>titulo del libro</label>
+            <input
+              placeholder='nombre del libro aqui'
+              id='book-name'
+              name='name'
+              type='text'
+              class="validate"
+              value="{{ book.name }}"
+              required
+            />
+            <span 
+              class="helper-text"
+              data-error="Es necesario ingresar el titulo del libro"
+              data-success="✅ Correcto"
+              ></span>
+            {{#if errorModel.name }}
+            <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+            {{/if}}
+          </div>
+          
+            <div class="card-content">
+          <div class='input-field'>
+            <label for='book-autor'>autor del libro</label>
+            <input
+              placeholder='nombre del autor ✍'
+              id='book-autor'
+              name='autor'
+              type='text'
+              class="validate"
+              value="{{ book.autor }}"
+              required
+            />
+            <span 
+              class="helper-text"
+              data-error="Es necesario ingresar el nommbre del autor"
+              data-success="✅ Correcto"
+              ></span>
+            {{#if errorModel.name }}
+            <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+            {{/if}}
+          </div>
+            
+
+          <div class="card-content">
+          <div class='input-field'>
+            <label for='book-categoria'>ingrese la categoria</label>
+            <input
+              placeholder='ingrese una categoria'
+              id='book-categoria'
+              name='categoria'
+              type='text'
+              class="validate"
+              value="{{ book.categoria }}"
+              required
+            />
+            <span 
+              class="helper-text"
+              data-error="Es necesario ingresar una categoria del libro"
+              data-success="✅ Correcto"
+              ></span>
+            {{#if errorModel.name }}
+            <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+            {{/if}}
+          </div>
+
+           <div class="card-content">
+          <div class='input-field'>
+            <label for='book-isbn'>ingrese el ISBN del libro</label>
+            <input
+              placeholder='ISBN del libro'
+              id='book-isbn'
+              name='isbn'
+              type='text'
+              class="validate"
+              value="{{ book.isbn }}"
+              required
+            />
+            <span 
+              class="helper-text"
+              data-error="Es necesario ingresar el ISBN del libro"
+              data-success="✅ Correcto"
+              ></span>
+            {{#if errorModel.name }}
+            <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+            {{/if}}
+          </div>
+
+            <div class="card-content">
+          <div class='input-field'>
+            <label for='book-numerocopias'>Copias del libro</label>
+            <input
+              placeholder='Numero de libros disponibles'
+              id='book-numero_copias'
+              name='numerocopias'
+              type='text'
+              class="validate"
+              value="{{ book.numerocopias }}"
+              required
+            />
+            <span 
+              class="helper-text"
+              data-error="Es necesario ingresar los numeros de libros"
+              data-success="✅ Correcto"
+              ></span>
+            {{#if errorModel.name }}
+            <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+            {{/if}}
+          </div> 
+
+          <div class='input-field'>
+            <label for='book-description'>
+              Descripción del libro
+            </label>
+            <textarea
+              id='book-description'
+              name='description'
+              class="materialize-textarea validate" required>{{book.description}}</textarea>
+              <span 
+              class="helper-text"
+              data-error="Debe ingresar una descripción"
+              data-success="✅ Correcto"
+              ></span>
+            {{#if errorModel.description }}
+            <span style="color: crimson;">Error: {{ errorModel.description }}</span>
+            {{/if}}
+          </div>   
+        </div>
+        <div class='card-action'>
+          <button class='blue darken-3 waves-effect waves-light btn'>
+            <i class='material-icons left'>edit</i>
+            Editar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

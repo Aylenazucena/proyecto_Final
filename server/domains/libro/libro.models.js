@@ -6,12 +6,12 @@ const { Schema } = mongoose;
 // Construir un Schema
 const LibroSchema = new Schema({
   // titulo
-  name: {
+  nombre: {
     type: String,
     // siempre se ocupa que no quieras un espacio vacio
     required: true,
   },
-  description: {
+  descripcion: {
     type: String,
     required: true,
   },
@@ -29,7 +29,7 @@ const LibroSchema = new Schema({
     // siempre se ocupa que no quieras un espacio vacio
     required: true,
   },
-  numerocopias: {
+  copias: {
     type: String,
     required: true,
   },
