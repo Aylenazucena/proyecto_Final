@@ -2,7 +2,7 @@
 import log from '../../config/winston';
 
 // Importando el modelo
-import bookModel from './libro.models';
+import libroModel from './libro.models';
 
 // Action Methods
 
@@ -16,10 +16,10 @@ const addForm = (req, res) => {
 // GET "/book"
 const showDashboard = async (req, res) => {
   // Consultado todos los proyectos
-  const book = await bookModel.find({}).lean().exec();
+  const libro = await libroModel.find({}).lean().exec();
   // Enviando los proyectos al cliente en JSON
   log.info('Se entrega dashboard de libros');
-  res.render('libro/dashboardViews', { book });
+  res.render('libro/dashboardViews', { libro });
 };
 
 // GET "/project/add"
@@ -141,7 +141,7 @@ const deleteBook = async (req, res) => {
   const { id } = req.params;
   // Usando el modelo para borrar el proyecto
   try {
-    const result = await bookModel.findByIdAndRemove(id);
+    const result = await libroModel.findByIdAndRemove(id);
     return res.status(200).json(result);
   } catch (error) {
     return res.status(500).json(error);
