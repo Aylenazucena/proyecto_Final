@@ -4,25 +4,26 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
+// Enable post and delete verbs
+import methodOverride from 'method-override';
 
 // Setting Webpack Modules
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 
-// Importing template-engine
-import configTemplateEngine from './config/templateEngine';
-
 // Importing webpack configuration
 import webpackConfig from '../webpack.dev.config';
-
-// Impornting winston logger
+// Importing config session
+import configSession from './config/configSessions';
+// Importing template-engine
+import configTemplateEngine from './config/templateEngine';
+// Importing winston logger
 import log from './config/winston';
-
+// importing debuglogger
+import debug from './services/debugLogger';
 // Importing Router
 import router from './router';
-
-import debug from './services/debugLogger';
 
 // Creando variable del directorio raiz
 // eslint-disable-next-line
@@ -67,20 +68,28 @@ if (nodeEnviroment === 'development') {
 // Configuring the template engine
 configTemplateEngine(app);
 
-// Database Connetion Checker
+// Database connection checker Middleware
 app.use((req, res, next) => {
   if (mongoose.connection.readyState === 1) {
-    log.info('✔ verificacion de conexicion a db exitosa');
+    log.info('✅ Verificación de conexión a bd exitosa');
     next();
   } else {
-    res.status(503).render('error/e503View', { layout: 'error' });
+    log.info('🔴 No pasa la verificación de conexión a la bd exitosa');
+    res
+      .status(503)
+      .render('errors/e503View', { layout: 'errors', status: 503 });
   }
 });
+
 // Se establecen los middlewares
 app.use(morgan('dev', { stream: log.stream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// Enable post and delete verbs
+app.use(methodOverride('_method'));
+// Habilitando manejo de sesiones y mensajes flash
+configSession(app);
 // Crea un server de archivos estaticos
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
