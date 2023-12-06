@@ -2,22 +2,22 @@
   <div class='col s12 m10 offset-m1 18 offset-12'>
     <div class='card'>
       <div class='card-image'>
-        <img src='/images/addbook.png' alt='Imagen de edicion de libro' />
+        <img src='/images/addlibro.jpg' alt='Imagen de edicion de libro' />
         <span class='card-title add-project' style='font-weight: bolder;'>
           Editar libro
         </span>
       </div>
-      <form autocomplete="off" action="/book/edit/{{ book._id }}?_method=put" method="post">
+      <form autocomplete="off" action="/libro/edit/{{ libro._id }}?_method=put" method="post">
      <div class='card-content'>
        <div class='input-field'>
-            <label for='book-name'>titulo del libro</label>
+            <label for='libro-nombre'>titulo del libro</label>
             <input
               placeholder='nombre del libro aqui'
-              id='book-name'
-              name='name'
+              id='libro-nombre'
+              name='nombre'
               type='text'
               class="validate"
-              value="{{ book.name }}"
+              value="{{ libro.name }}"
               required
             />
             <span 
@@ -32,14 +32,14 @@
           
             <div class="card-content">
           <div class='input-field'>
-            <label for='book-autor'>autor del libro</label>
+            <label for='libro-autor'>autor del libro</label>
             <input
               placeholder='nombre del autor ✍'
-              id='book-autor'
+              id='libro-autor'
               name='autor'
               type='text'
               class="validate"
-              value="{{ book.autor }}"
+              value="{{ libro.autor }}"
               required
             />
             <span 
@@ -55,14 +55,14 @@
 
           <div class="card-content">
           <div class='input-field'>
-            <label for='book-categoria'>ingrese la categoria</label>
+            <label for='libro-categoria'>ingrese la categoria</label>
             <input
               placeholder='ingrese una categoria'
-              id='book-categoria'
+              id='libro-categoria'
               name='categoria'
               type='text'
               class="validate"
-              value="{{ book.categoria }}"
+              value="{{ libro.categoria }}"
               required
             />
             <span 
@@ -80,11 +80,11 @@
             <label for='book-isbn'>ingrese el ISBN del libro</label>
             <input
               placeholder='ISBN del libro'
-              id='book-isbn'
+              id='libro-isbn'
               name='isbn'
               type='text'
               class="validate"
-              value="{{ book.isbn }}"
+              value="{{ libro.isbn }}"
               required
             />
             <span 
@@ -99,14 +99,14 @@
 
             <div class="card-content">
           <div class='input-field'>
-            <label for='book-numerocopias'>Copias del libro</label>
+            <label for='libro-copias'>Copias del libro</label>
             <input
               placeholder='Numero de libros disponibles'
-              id='book-numero_copias'
-              name='numerocopias'
+              id='libro-copias'
+              name='copias'
               type='text'
               class="validate"
-              value="{{ book.numerocopias }}"
+              value="{{ libro.copias }}"
               required
             />
             <span 
@@ -120,12 +120,12 @@
           </div> 
 
           <div class='input-field'>
-            <label for='book-description'>
+            <label for='libro-descripcion'>
               Descripción del libro
             </label>
             <textarea
-              id='book-description'
-              name='description'
+              id='libro-descripcion'
+              name='descripcion'
               class="materialize-textarea validate" required>{{book.description}}</textarea>
               <span 
               class="helper-text"

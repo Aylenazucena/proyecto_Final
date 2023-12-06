@@ -1,15 +1,28 @@
-<h1>Listado de Proyectos</h1>
+<h1>Listado de libros</h1>
 <div class="row">
-  {{#each projects}}
+  {{#each libro}}
     <div class="col s12">
       <div class="card teal darken-4">
         <div class="card-content teal-text text-lighten-5">
-          <span class="card-title">{{name}}</span>
-          <p>{{description}}</p>
+          <span class="card-title">{{nombre}}</span>
+          <p>{{autor}}</p>
+          <p>{{categoria}}</p>
+           <p>{{isbn}}</p>
+          <p>{{copias}}</p>
+          <p>{{descripcion}}</p>
         </div>
         <div class="card-action">
-          <a href="#">This is a link</a>
-          <a href="#">This is a link</a>
+					<a href="/libro/edit/{{_id}}">
+            <i class="material-icons" 
+              style = "display: inline-flex; vertical-align: sub;">edit</i>
+            <span >Editar libro</span>
+          </a>
+          <a href="javascript: deleteBook('{{_id}}')" class="inline">
+            <i class="material-icons" 
+	            style = "display: inline-flex; vertical-align: sub;">
+	            delete</i>
+            Borrar libro
+          </a>
         </div>
       </div>
     </div>
