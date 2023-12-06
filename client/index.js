@@ -1,14 +1,22 @@
 // cargando los estilos
 /* eslint-disable no-console */
 import './styles/style.css';
+// mensaje en consola
 /* eslint-disable */
-// Importandoe Estilos de Materialize CSS
+// Importando estilos de Materialize CSS
 import 'materialize-css/dist/css/materialize.css';
 // Importando scripts de Materialize
 import 'materialize-css/dist/js/materialize';
 /* eslint-enable */
+// Script para borrar book
+import deleteBook from './domains/libro.dashboard';
 
-// Inicializando Scripts de Materialize para interactividad
+// Inicializando Scripts de Materialize para la interactividad
 M.AutoInit();
 
-console.log('Webpack Working Middleware!!! 📦');
+// Cargando script en caso de que la URL sea '/libro'
+if (window.location.pathname === '/book') {
+  window.deleteBook = deleteBook;
+}
+
+console.log('🎉 Estilos cargados correctamente 🎉');

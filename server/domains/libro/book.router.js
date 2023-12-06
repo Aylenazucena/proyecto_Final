@@ -1,49 +1,49 @@
 // Importando el Router de Express
 import { Router } from 'express';
-
+ 
 // Importando el controlador
-import libroController from './libro.controller';
-
+import bookController from './book.controller';
+ 
 // Importando factory de validación
 import ValidateFactory from '../../services/validateFactory';
 // Importando el validador de proyectos
-import libroValidator from './libro.validator';
-
+import bookValidator from './book.validator';
+ 
 // Creando una isntancia del enrutador
 const router = new Router();
-
+ 
 // Enrutamos
 // GET "/book"
-router.get(['/', '/dashboard'], libroController.showDashboard);
-
+router.get(['/', '/dashboard'], bookController.showDashboard);
+ 
 // GET "/book/add"
-router.get(['/add', '/add-form'], libroController.add);
-
+router.get(['/add', '/add-form'], bookController.add);
+ 
 // POST "/book/add"
 router.post(
   '/add',
   ValidateFactory({
-    schema: libroValidator.libroSchema,
-    getObject: libroValidator.getlibro,
+    schema: bookValidator.bookSchema,
+    getObject: bookValidator.getbook,
   }),
-  libroController.addPost,
+  bookController.addPost,
 );
-
+ 
 // GET "/project/edit/:id"
-router.get('/edit/:id', libroController.edit);
-
+router.get('/edit/:id', bookController.edit);
+ 
 // PUT "/book/edit/:id"
 router.put(
   '/edit/:id',
   ValidateFactory({
-    schema: libroValidator.libroSchema,
-    getObject: libroValidator.getlibro,
+    schema: bookValidator.bookSchema,
+    getObject: bookValidator.getbook,
   }),
-  libroController.editPut,
+  bookController.editPut,
 );
-
+ 
 // DELETE "/book/:id"
-router.delete('/:id', libroController.deletelibro);
-
+router.delete('/:id', bookController.deleteBook);
+ 
 // Exporto este tramo de ruta
 export default router;

@@ -1,148 +1,147 @@
 <div class="row">
-  <div class="col s12 m10 offset-m1 l8 offset-l2">
-    <div class="card">
-      <div class="card-image">
-        <img src="/images/addlibro.jpg" alt="image for addlibro project libreria">
-        <span class="card-title add-book" style="font-weight: bolder;">
+<div class="col s12 m10 offset-m1 l8 offset-l2">
+<div class="card">
+<div class="card-image">
+<img src="/images/addlibro.png" alt="image for addbook project library">
+<span class="card-title add-book" style="font-weight: bolder;">
           agregar libro
-        </span>
-    </div>
-      <form autocomplete="off" action="/libro/add" method="post">
-        <div class="card-content">
-          <div class='input-field'>
-            <label for='book-name'>titulo del libro</label>
-            <input
+</span>
+</div>
+<form autocomplete="off" action="/book/add" method="post">
+<div class="card-content">
+<div class='input-field'>
+<label for='book-name'>titulo del libro</label>
+<input
               placeholder='nombre del libro aqui'
               id='book-name'
               name='name'
               type='text'
               class="validate"
-              value="{{ libro.nombre }}"
+              value="{{ book.name }}"
               required
             />
-            <span 
+<span 
               class="helper-text"
               data-error="Es necesario ingresar el titulo del libro"
               data-success="✅ Correcto"
-              ></span>
+></span>
             {{#if errorModel.name }}
-            <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+<span style="color: crimson;">Error: {{ errorModel.name }}</span>
             {{/if}}
-          </div>
-          
-            <div class="card-content">
-          <div class='input-field'>
-            <label for='book-autor'>autor del libro</label>
-            <input
+</div>
+<div class="card-content">
+<div class='input-field'>
+<label for='book-autor'>autor del libro</label>
+<input
               placeholder='nombre del autor ✍'
               id='book-autor'
               name='autor'
               type='text'
               class="validate"
-              value="{{ libro.autor }}"
+              value="{{ book.autor }}"
               required
             />
-            <span 
+<span 
               class="helper-text"
               data-error="Es necesario ingresar el nommbre del autor"
               data-success="✅ Correcto"
-              ></span>
+></span>
             {{#if errorModel.name }}
-            <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+<span style="color: crimson;">Error: {{ errorModel.name }}</span>
             {{/if}}
-          </div>
-            
+</div>
 
+ 
           <div class="card-content">
-          <div class='input-field'>
-            <label for='libro-categoria'>ingrese la categoria</label>
-            <input
+<div class='input-field'>
+<label for='book-categoria'>ingrese la categoria</label>
+<input
               placeholder='ingrese una categoria'
               id='book-categoria'
               name='categoria'
               type='text'
               class="validate"
-              value="{{ libro.categoria }}"
+              value="{{ book.categoria }}"
               required
             />
-            <span 
+<span 
               class="helper-text"
               data-error="Es necesario ingresar una categoria del libro"
               data-success="✅ Correcto"
-              ></span>
+></span>
             {{#if errorModel.name }}
-            <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+<span style="color: crimson;">Error: {{ errorModel.name }}</span>
             {{/if}}
-          </div>
-
+</div>
+ 
            <div class="card-content">
-          <div class='input-field'>
-            <label for='libro-isbn'>ingrese el ISBN del libro</label>
-            <input
+<div class='input-field'>
+<label for='book-isbn'>ingrese el ISBN del libro</label>
+<input
               placeholder='ISBN del libro'
-              id='libro-isbn'
+              id='book-isbn'
               name='isbn'
               type='text'
               class="validate"
-              value="{{ libro.isbn }}"
+              value="{{ book.isbn }}"
               required
             />
-            <span 
+<span 
               class="helper-text"
               data-error="Es necesario ingresar el ISBN del libro"
               data-success="✅ Correcto"
-              ></span>
+></span>
             {{#if errorModel.name }}
-            <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+<span style="color: crimson;">Error: {{ errorModel.name }}</span>
             {{/if}}
-          </div>
-
+</div>
+ 
             <div class="card-content">
-          <div class='input-field'>
-            <label for='book-numerocopias'>Copias del libro</label>
-            <input
+<div class='input-field'>
+<label for='book-numerocopias'>Copias del libro</label>
+<input
               placeholder='Numero de libros disponibles'
               id='book-numero_copias'
               name='numerocopias'
               type='text'
               class="validate"
-              value="{{ libro.copias }}"
+              value="{{ book.numerocopias }}"
               required
             />
-            <span 
+<span 
               class="helper-text"
               data-error="Es necesario ingresar los numeros de libros"
               data-success="✅ Correcto"
-              ></span>
+></span>
             {{#if errorModel.name }}
-            <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+<span style="color: crimson;">Error: {{ errorModel.name }}</span>
             {{/if}}
-          </div> 
-
+</div>
+ 
           <div class='input-field'>
-            <label for='book-description'>
+<label for='book-description'>
               Descripción del libro
-            </label>
-            <textarea
+</label>
+<textarea
               id='book-description'
               name='description'
               class="materialize-textarea validate" required>{{book.description}}</textarea>
-              <span 
+<span 
               class="helper-text"
               data-error="Debe ingresar una descripción"
               data-success="✅ Correcto"
-              ></span>
+></span>
             {{#if errorModel.description }}
-            <span style="color: crimson;">Error: {{ errorModel.description }}</span>
+<span style="color: crimson;">Error: {{ errorModel.description }}</span>
             {{/if}}
-          </div>
-        </div>
-        <div class="card-action">
-          <button type="submit" class="blue darken-3 waves-effect waves-light btn">
-            <i class="material-icons left">note_add</i> Agregar
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
+</div>
+</div>
+<div class="card-action">
+<button type="submit" class="blue darken-3 waves-effect waves-light btn">
+<i class="material-icons left">note_add</i> Agregar
+</button>
+</div>
+</form>
+</div>
+</div>
 </div>

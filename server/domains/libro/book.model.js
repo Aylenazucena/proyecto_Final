@@ -2,16 +2,16 @@
 import mongoose from 'mongoose';
 // Desestructurando la funcion Schema Special
 const { Schema } = mongoose;
-
+ 
 // Construir un Schema
-const LibroSchema = new Schema({
+const bookSchema = new Schema({
   // titulo
-  nombre: {
+  name: {
     type: String,
     // siempre se ocupa que no quieras un espacio vacio
     required: true,
   },
-  descripcion: {
+  description: {
     type: String,
     required: true,
   },
@@ -29,7 +29,7 @@ const LibroSchema = new Schema({
     // siempre se ocupa que no quieras un espacio vacio
     required: true,
   },
-  copias: {
+  numerocopias: {
     type: String,
     required: true,
   },
@@ -38,7 +38,7 @@ const LibroSchema = new Schema({
     default: Date.now,
   },
 });
-
+ 
 // Compilando el esquema para
 // generar un modelo
-export default mongoose.model('libro', LibroSchema);
+export default mongoose.model('book', bookSchema);
