@@ -3,6 +3,7 @@ import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
+import mongoose from 'mongoose';
 
 // Setting Webpack Modules
 import webpack from 'webpack';
@@ -66,6 +67,15 @@ if (nodeEnviroment === 'development') {
 // Configuring the template engine
 configTemplateEngine(app);
 
+// Database Connetion Checker
+app.use((req, res, next) => {
+  if (mongoose.connection.readyState === 1) {
+    log.info('✔ verificacion de conexicion a db exitosa');
+    next();
+  } else {
+    res.status(503).render('error/e503View', { layout: 'error' });
+  }
+});
 // Se establecen los middlewares
 app.use(morgan('dev', { stream: log.stream }));
 app.use(express.json());
