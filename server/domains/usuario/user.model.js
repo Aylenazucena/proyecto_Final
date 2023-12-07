@@ -36,7 +36,12 @@ const UserSchema = new Schema(
         9,
         'El código de estudiante debe tener al menos 9 caracteres',
       ],
-      // Resto de la validación...
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      message: '{VALUE} no es un rol valido',
+      default: 'user',
     },
     emailConfirmationToken: String,
     emailConfirmationAt: Date,
@@ -62,6 +67,7 @@ UserSchema.methods = {
       code: this.code,
       section: this.section,
       mail: this.mail,
+      role: this.role,
       password: this.password,
       emailConfirmationToken: this.generateConfirmationToken(),
       emailConfirmationAt: this.emailConfirmationAt,
