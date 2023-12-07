@@ -12,13 +12,14 @@ const { Schema } = mongoose;
 
 const UserSchema = new Schema(
   {
-    firstName: { type: String, required: true },
-    lastname: { type: String, required: true },
-    grade: { type: String, required: true },
-    section: { type: String, required: true },
+    firstName: { type: String, required: true, lowercase: true },
+    lastname: { type: String, required: true, lowercase: true },
+    grade: { type: String, required: true, lowercase: true },
+    section: { type: String, required: true, lowercase: true },
     mail: {
       type: String,
       unique: true,
+      lowercase: true,
       required: [true, 'Es necesario ingresar email'],
       validate: {
         validator: (mail) => validator.isEmail(mail),
@@ -35,6 +36,7 @@ const UserSchema = new Schema(
     code: {
       type: String,
       required: [true, 'Es necesario ingresar un código de estudiante'],
+      lowercase: true,
       trim: true,
       minLength: [
         9,
@@ -60,7 +62,7 @@ UserSchema.methods = {
     return bcrypt.hashSync(this.password, 10);
   },
   generateConfirmationToken() {
-    return crypto.randomBytes(64).toString('hex');
+    return crypto.randomBytes(32).toString('hex');
   },
   toJSON() {
     return {
@@ -78,6 +80,18 @@ UserSchema.methods = {
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     };
+  },
+  // Metodo para activar el usuario
+  async activate() {
+    await this.updateOne({
+      emailConfirmationToken: null,
+      // updatedAt: new Date(),
+      emailConfirmationAt: new Date(),
+    }).exec();
+  },
+  // Verifica el password
+  authenticateUser(password) {
+    return bcrypt.compareSync(password, this.password);
   },
 };
 
@@ -106,7 +120,7 @@ UserSchema.post('save', async function sendConfirmationMail() {
 
   // Configuring mail data
   mailSender.mail = {
-    from: 'jorge.rr@gamadero.tecnm.mx',
+    from: 'bere.sr@gamadero.tecnm.mx',
     to: this.mail,
     subject: 'Account confirmation',
   };
@@ -119,6 +133,7 @@ UserSchema.post('save', async function sendConfirmationMail() {
         lastname: this.lastname,
         mail: this.mail,
         token: this.emailConfirmationToken,
+        host: configKeys.APP_URL,
       },
       `
       Estimado ${this.firstName} ${this.lastname}  
@@ -134,5 +149,12 @@ UserSchema.post('save', async function sendConfirmationMail() {
     return null;
   }
 });
+
+// Statics Methods
+UserSchema.statics.findByToken = async function findByToken(token) {
+  // "this" hace referencia al modelo es decir
+  // a todo el conjunto de documentos
+  return this.findOne({ emailConfirmationToken: token });
+};
 
 export default mongoose.model('User', UserSchema);

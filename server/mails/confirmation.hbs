@@ -1,9 +1,9 @@
-<h1>Estimado {{user}} {{lastname}}</h1> 
-<p> 
-  hemos enviado un correo de confirmación a {{mail}}  
-  favor de hacer clic en enlace de dicho correo. 
-</p> 
-
-<p> 
-  Token: {{token}} 
+<h1>Confirmación de cuenta</h1>
+<p>
+  Estimado {{user}} {{lastname}} <br> 
+  Para poder confirmar su cuenta en ProjNotes
+  es necesario hacer clic en el siguiente enlace:
 </p>
+<a href="{{host}}/user/confirm/{{token}}">
+  URL: {{host}}/user/confirm/{{token}}
+</a>

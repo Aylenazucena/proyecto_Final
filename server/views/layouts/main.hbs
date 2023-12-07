@@ -7,7 +7,7 @@
     <link rel='stylesheet' href='/styles/app.css' />
     <script src="/bundle.js" defer></script>
   </head>
-  <body>
+  <body{{#if backgroundColor}} class="{{backgroundColor}}"{{/if}}>
     {{!-- Llamando a la vista parcial de la barra de navegacion --}}
     {{> _navbar }}
 
