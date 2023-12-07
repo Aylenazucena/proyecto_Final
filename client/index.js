@@ -20,7 +20,7 @@ if (window.location.pathname === '/book') {
   window.deleteBook = deleteBook;
 }
 if (window.location.pathname === '/user') {
-  window.deleteBook = deleteUser;
+  window.deleteUser = deleteUser;
 }
 
 console.log('🎉 Estilos cargados correctamente 🎉');
