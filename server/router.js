@@ -5,6 +5,9 @@ import userRouter from './domains/usuario/usario.router';
 // Imporntado enrutador project
 import libroRouter from './domains/libro/book.router';
 
+// importtando AuthorizationMiddleware
+import AuthFactory from './services/authorizationFactory';
+
 // Función que agrega rutas
 const addRoutes = (app) => {
   // Agregando el enrutador de home
@@ -12,7 +15,7 @@ const addRoutes = (app) => {
   // Agregado el enrutado de user
   app.use('/user', userRouter);
   // Agregado el enrutado de project
-  app.use('/book', libroRouter);
+  app.use('/book', AuthFactory('user'), libroRouter);
   return app;
 };
 

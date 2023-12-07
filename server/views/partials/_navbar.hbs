@@ -83,12 +83,12 @@
         <i class="material-icons white-text">menu</i>
       </a>
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="/" class="blue-text"><i class="material-icons left">home</i>Inicio</a></li>
         {{#unless user}}
+        {{else}}
+        <li><a href="/" class="blue-text"><i class="material-icons left">home</i>Inicio</a></li>
         <li class="divider"></li>
         <li><a href="/book" class="blue-text"><i class="material-icons left">view_list</i>Titulos</a></li>
         <li><a href="/book/add" class="blue-text"><i class="material-icons left">add_box</i>Registrar libro</a></li>
-        {{else}}
         {{/unless}}
         <li class="divider"></li>
         {{#unless user}}
