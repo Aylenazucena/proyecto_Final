@@ -1,14 +1,14 @@
 // Importing winston logger
 import log from '../../config/winston';
- 
+
 // Importando el modelo
 import bookModel from './book.model';
- 
+
 // Action Methods
- 
+
 // GET '/book/addForm'
 // GET '/book/add'
- 
+
 // GET "/book"
 const showDashboard = async (req, res) => {
   // Consultado todos los proyectos
@@ -17,12 +17,12 @@ const showDashboard = async (req, res) => {
   log.info('Se entrega dashboard de libros');
   res.render('libro/dashboardViews', { book });
 };
- 
+
 // GET "/project/add"
 const add = (req, res) => {
   res.render('libro/addbook');
 };
- 
+
 // POST "/project/add"
 const addPost = async (req, res) => {
   // Rescatando la info del formulario
@@ -41,7 +41,7 @@ const addPost = async (req, res) => {
       workingPrev[`${curr.path}`] = curr.message;
       return workingPrev;
     }, {});
-    return res.status(422).render('book/addbook', { book, errorModel });
+    return res.status(422).render('libro/addbook', { book, errorModel });
   }
   // En caso de que pase la validación
   // Se desestructura la información
@@ -66,7 +66,7 @@ const addPost = async (req, res) => {
     return res.status(500).json(error);
   }
 };
- 
+
 // GET "/book/edit/:id"
 const edit = async (req, res) => {
   // Extrayendo el id por medio de los parametros de url
@@ -84,13 +84,13 @@ const edit = async (req, res) => {
     // Se manda a renderizar la vista de edición
     // res.render('book/editView', book);
     log.info(`libro encontrado con el id: ${id}`);
-    return res.render('book/editView', { book });
+    return res.render('libro/editView', { book });
   } catch (error) {
     log.error('Ocurre un error en: metodo "error" de book.controller');
     return res.status(500).json(error);
   }
 };
- 
+
 // PUT "/book/edit/:id"
 const editPut = async (req, res) => {
   const { id } = req.params;
@@ -110,7 +110,7 @@ const editPut = async (req, res) => {
       workingPrev[`${curr.path}`] = curr.message;
       return workingPrev;
     }, {});
-    return res.status(422).render('book/editView', { book, errorModel });
+    return res.status(422).render('libro/editView', { book, errorModel });
   }
   // Si no hay error
   const book = await bookModel.findOne({ _id: id });
@@ -136,7 +136,7 @@ const editPut = async (req, res) => {
     return res.status(500).json(error);
   }
 };
- 
+
 const deleteBook = async (req, res) => {
   const { id } = req.params;
   // Usando el modelo para borrar el proyecto
@@ -149,7 +149,6 @@ const deleteBook = async (req, res) => {
     return res.status(500).json(error);
   }
 };
-
 
 // Controlador user
 export default {
