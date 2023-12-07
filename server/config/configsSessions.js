@@ -1,38 +1,41 @@
-// se importa manejo de sesiones con express
+// Importando manejo de sesiones
 import ExpressSession from 'express-session';
-// importando mensajes flash
+// Importando soporte para mensajes flash
 import ConnectFlash from 'connect-flash';
-// soporte de almacenamiento
+// Importando soporte para almacenado de sesiones
 import MongoStore from 'connect-mongo';
-// importando la URL de la base de datos de sistema
+// Importando la URL de la base de datos del sistema
 import configKeys from './configKeys';
 
-// Se crea objeto de opciones para el manejo de sesiones
+// Creando objeto de opciones para el manejo de sesiones
 const options = {
   secret: 'awesome',
   resave: true,
   saveUninitialized: true,
   store: MongoStore.create({
     mongoUrl: configKeys.MONGO_URL,
-    ttl: 1 * 24 * 60 * 60, // se guardaran por 24 hrs
+    ttl: 1 * 24 * 60 * 60, // Salva la sesión por 1 día
   }),
 };
 
-// Exportando funcion que registra
+// Exportando función registradora
 export default (app) => {
   // Creando el middleware
   const sessionsMiddleware = ExpressSession(options);
-  // Se registra middleware en app
+  // Registrando middleware
   app.use(sessionsMiddleware);
-  // Se registra middlware de mensajes flash
+  // Registramos middleware de mensajes flash
   app.use(ConnectFlash());
-  // se crea middleware para rescatar mensajes de sesiones
+  // Se crea middleware para rescatar los mensajes
+  // de las sesiones
   app.use((req, res, next) => {
     res.locals.successMessage = req.flash('successMessage');
-    res.locals.infoMessage = req.flash('infoMessage');
     res.locals.errorMessage = req.flash('errorMessage');
+    res.locals.infoMessage = req.flash('infoMessage');
+    // Esta servira para passport
     res.locals.passportError = req.flash('passportError');
     next();
   });
+  // Retornando la app
   return app;
 };

@@ -29,3 +29,10 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
   font: 24px;
 }
+
+#toast-container {
+  top: auto !important;
+  right: auto !important;
+  bottom: 50%;
+  left: 45%;
+}
