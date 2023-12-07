@@ -12,21 +12,21 @@
 {{#if infoMessage}}
   <script>
     document.querySelector('script[src="/bundle.js"]').onload = ()=>{
-      M.toast({html: "<i class='material-icons'>info</i> {{infoMessage}}", classes: 'info', displayLength: 2000 })
+      M.toast({html: "<i class='material-icons'>info</i> {{infoMessage}}", classes: 'blue', displayLength: 2000 })
     }
   </script>
 {{/if}}
 {{#if errorMessage}}
   <script>
     document.querySelector('script[src="/bundle.js"]').onload = ()=>{
-      M.toast({html: "<i class='material-icons'>error</i> {{errorMessage}}", classes: 'error', displayLength: 2000})
+      M.toast({html: "<i class='material-icons'>error</i> {{errorMessage}}", classes: 'red', displayLength: 2000})
     }
   </script>
 {{/if}}
 {{#if passportError}}
   <script>
     document.querySelector('script[src="/bundle.js"]').onload = ()=>{
-      M.toast({html: "<i class='material-icons'>error</i> {{passportError}}", classes: 'error', displayLength: 2000})
+      M.toast({html: "<i class='material-icons'>error</i> {{passportError}}", classes: 'red', displayLength: 2000})
     }
   </script>
 {{/if}}

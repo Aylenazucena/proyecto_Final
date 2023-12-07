@@ -17,6 +17,7 @@
 
 <!-- Dropdow para menu "Usuarios" -->
 <ul id="user-dropdown-menu" class="dropdown-content">
+  {{#unless user}}
   <li>
     <a href="/user/login" class="blue-text">
       <i class="material-icons left">login</i>
@@ -30,6 +31,7 @@
       Registrarse
     </a>
   </li>
+  {{else}}
   <li class="divider"></li>
   <li>
     <a href="/user" class="blue-text">
@@ -44,6 +46,7 @@
       Cerrar sesión
     </a>
   </li>
+  {{/unless}}
 </ul>
 
 <nav class="blue darken-2">
@@ -80,14 +83,20 @@
         <i class="material-icons white-text">menu</i>
       </a>
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="/" class="white-text"><i class="material-icons left">home</i>Inicio</a></li>
+        <li><a href="/" class="blue-text"><i class="material-icons left">home</i>Inicio</a></li>
+        {{#unless user}}
         <li class="divider"></li>
         <li><a href="/book" class="blue-text"><i class="material-icons left">view_list</i>Titulos</a></li>
         <li><a href="/book/add" class="blue-text"><i class="material-icons left">add_box</i>Registrar libro</a></li>
+        {{else}}
+        {{/unless}}
         <li class="divider"></li>
+        {{#unless user}}
         <li><a href="/user/login" class="blue-text"><i class="material-icons left">login</i>Ingresar</a></li>
         <li><a href="/user/register" class="blue-text"><i class="material-icons left">person_add</i>Registrarse</a></li>
+        {{else}}
         <li><a href="/user/logout" class="blue-text"><i class="material-icons left">logout</i>Cerrar Sesión</a></li>
+        {{/unless}}
         <li class="divider"></li>
         <li><a href="/about" class="blue-text"><i class="material-icons left">business</i>Acerca De.</a></li>
       </ul>

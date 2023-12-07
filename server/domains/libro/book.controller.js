@@ -11,6 +11,10 @@ import bookModel from './book.model';
 
 // GET "/book"
 const showDashboard = async (req, res) => {
+  // Log de los query params
+  if (req.query.message) {
+    res.locals.successMessage = `Bienvenido ${req.user.firstName}`;
+  }
   // Consultado todos los proyectos
   const book = await bookModel.find({}).lean().exec();
   // Enviando los proyectos al cliente en JSON

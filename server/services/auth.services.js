@@ -84,9 +84,9 @@ passport.use(localStrategy);
 // el segundo argumento son las opciones
 export const authLocal = passport.authenticate('local', {
   // Redireccionamiento en caso de exito
-  successRedirect: '/book/dashboard',
+  successRedirect: '/book/dashboard?message=loginSuccess',
   // Redireccionamiento en caso de fallo
-  failureRedirect: '/user/login',
+  failureRedirect: '/user/login?message=loginfailed',
   // Permite el uso de mensajes flash
   // si falla la autenticacion
   failureFlash: true,
