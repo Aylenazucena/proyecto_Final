@@ -1,0 +1,34 @@
+<h1>Listado de Usuarios</h1>
+
+<div class="container">
+  <div class="row">
+    {{#each user}}
+    <div class="col s12">
+      <div class="card hoverable">
+        <div class="card-content valign-wrapper">
+          <div>
+            <span class="card-title">{{firstName}} {{lastname}}</span>
+            <div class="divider"></div>
+            <p><strong>Grado:</strong> {{grade}}</p>
+            <p><strong>Sección:</strong> {{section}}</p>
+            <p><strong>Email:</strong> {{mail}}</p>
+            <p><strong>Código de Estudiante:</strong> {{code}}</p>
+          </div>
+        </div>
+        <div class="card-action valign-wrapper">
+          <a href="/user/edit/{{_id}}" class="teal-text valign-wrapper">
+            <i class="material-icons">edit</i>
+            <span>Editar usuario</span>
+          </a>
+          <a href="javascript: deleteUser('{{_id}}')" class="red-text valign-wrapper">
+            <i class="material-icons">delete</i>
+            <span>Borrar usuario</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <p>No hay usuarios que listar.</p>
+    {{/each}}
+  </div>
+</div>

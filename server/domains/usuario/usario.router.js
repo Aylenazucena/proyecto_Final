@@ -15,7 +15,7 @@ const router = new Router();
 
 // Enrutamos
 // GET '/user/Dashboard
-router.get(['/', '/dashboard'], userController.showDashboard);
+router.get(['/', '/dashboard'], userController.dashboard);
 // GET '/user/login
 router.get('/login', userController.login);
 
@@ -31,9 +31,20 @@ router.post(
   ValidateFactory(userValidator.signUp),
   userController.registerPost,
 );
-
 // GET "/project/edit/:id"
-// router.get('/edit/:id', userController.edit);
+router.get('/edit/:id', userController.edit);
 
+// PUT "/user/edit/:id"
+router.put(
+  '/edit/:id',
+  ValidateFactory({
+    schema: userValidator.signUp.schema,
+    getObject: userValidator.signUp.getObject,
+  }),
+  userController.editPut,
+);
+
+// DELETE "/user/:id"
+router.delete('/:id', userController.deleteUser);
 // Exporto este tramo de ruta
 export default router;

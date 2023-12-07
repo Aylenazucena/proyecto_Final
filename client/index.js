@@ -10,6 +10,7 @@ import 'materialize-css/dist/js/materialize';
 /* eslint-enable */
 // Script para borrar book
 import deleteBook from './domains/libro.dashboard';
+import deleteUser from './domains/user.dashboard';
 
 // Inicializando Scripts de Materialize para la interactividad
 M.AutoInit();
@@ -17,6 +18,9 @@ M.AutoInit();
 // Cargando script en caso de que la URL sea '/libro'
 if (window.location.pathname === '/book') {
   window.deleteBook = deleteBook;
+}
+if (window.location.pathname === '/user') {
+  window.deleteBook = deleteUser;
 }
 
 console.log('🎉 Estilos cargados correctamente 🎉');
